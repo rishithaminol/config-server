@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  labels:
+    app: config-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: devgudppl
+          image: devgudppl.azurecr.io/config-server:0.4
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: devgudppl
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  labels:
+    app: config-server
+spec:
+  ports:
+    - port: 5000
+      protocol: TCP
+  selector:
+    app: config-server
