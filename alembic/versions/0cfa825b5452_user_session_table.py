@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id_', sa.Integer(), nullable=False),
     sa.Column('id_user', sa.Integer(), nullable=False),
     sa.Column('user_agent', sa.Text(), nullable=True),
-    sa.Column('ip', postgresql.INET(), nullable=False),
+    sa.Column('ip', sa.Text(), nullable=False),
     sa.Column('time', sa.DateTime(), nullable=False),
     sa.Column('expire', sa.DateTime(), nullable=False),
     sa.Column('session_id', sa.String(length=128), nullable=False),

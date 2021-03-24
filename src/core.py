@@ -27,7 +27,7 @@ def get_user_data(user_name, session_id):
 				session_data.time
 			FROM user_data
 			LEFT JOIN session_data ON user_data.id_ = session_data.id_user
-			WHERE session_id = :session_id AND session_data.expire > NOW()
+			WHERE session_id = :session_id AND session_data.expire > datetime('now');
 		'''
 	else:
 		sql = '''
